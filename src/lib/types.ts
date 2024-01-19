@@ -1,0 +1,5 @@
+type Inputs = {
+  username: string
+  password: string
+}
+export type { Inputs }
