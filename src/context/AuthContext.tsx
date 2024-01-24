@@ -5,10 +5,12 @@ export const AuthContext = createContext(null)
 export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [currUser, setCurrUser] = useState({})
+  const [isLoading, setIsLoading] = useState(false)
 
   const logout = () => {
     setIsAuthenticated(false)
   }
+
   useEffect(() => {
     const storedAuth = localStorage.getItem("isAuthenticated")
     const storedUser = localStorage.getItem("user")
@@ -28,7 +30,15 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ isAuthenticated, setIsAuthenticated, logout, currUser, setCurrUser }}
+      value={{
+        isAuthenticated,
+        setIsAuthenticated,
+        logout,
+        currUser,
+        setCurrUser,
+        isLoading,
+        setIsLoading,
+      }}
     >
       {children}
     </AuthContext.Provider>
